@@ -1,4 +1,171 @@
-console.log("Your code goes here!!");
+//Code of javascript
+//Table Search bar logic
+tableSearchBar.addEventListener("keyup", (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+
+  Array.from(tableItemsBoxes).forEach((tableBox) => {
+    const tableName = tableBox.firstElementChild.textContent;
+    // console.log(tableName) ;
+    if (tableName.toLowerCase().indexOf(searchTerm) != -1) { ////index finding positive one Dispalying all those values
+      tableBox.style.display = "block";
+    } else {
+      tableBox.style.display = "none";
+    }
+  });
+});
+
+
+// Menu Search by name,course ,id
+
+menuSearchBar.addEventListener("keyup", (e) => {
+  const searchTerm = e.target.value.toLowerCase();//search box value entered
+  Array.from(menuItemBoxes).forEach((menuBox) => {
+    const menuName = menuBox.firstElementChild.textContent;
+    if (menuName.toLowerCase().indexOf(searchTerm) != -1) { //index finding positive one  Dispalying al those values
+      menuBox.style.display = "block";
+    } else {
+      menuBox.style.display = "none";
+    }
+  });
+});
+
+
+
+// Feature of drop & drag 
+
+// Drag Function Start
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+
+
+// Drag and  Drop function 
+//we wil take items put put into particular table whatevver we want so for that i will check table no user drop values if user 
+//enter values are present then i'll simpli check map or array it is present or not if present then don't add/append ponly increament
+//count of quantity and total orice
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  let tableDet = ev.target.children;
+  let itemsInfos = document.getElementById(data).children;
+  let itemName = itemsInfos[0].textContent;
+  let itemPrice = parseInt(itemsInfos[1].textContent.replace(/\D/g, "")); ///pprice eaxtracted
+  let tableName = tableDet[0].textContent;
+  let tablePrice = parseInt(tableDet[1].textContent.split(": ")[1]); //tabee total price extracted
+  let itemsQuantity = parseInt(tableDet[2].textContent.split(": ")[1]); 
+
+  // Updating the price on tableDet
+  let updatedPrice = tablePrice + itemPrice;
+  tableDet[1].textContent = `Rs: ${updatedPrice}`;
+
+  if (tableName == "Table 1") {
+    // if itemInfo not present in map
+    if (!map_1.has(itemName)) {
+      map_1.set(itemName, [itemPrice, 1]);
+      itemsQuantity++;
+      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
+      let serialNo = map_1.size;
+      generateRow(map_1, tableDet[1], tableDet[2], updatedPrice, itemsQuantity, serialNo, "popup1Bill", itemName, itemPrice);
+    }
+    // If it is present in map
+    else {
+      // Updating the quantity of already added item in map
+      itemsQuantity++;
+      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
+      map_1.set(itemName, [itemPrice, map_1.get(itemName)[1] + 1]);
+      updateInput(map_1, "popup1", itemName);
+    }
+  }
+
+  if (tableName == "Table 2") {
+    // if itemInfo not present in map
+    if (!map_2.has(itemName)) {
+      map_2.set(itemName, [itemPrice, 1]);
+      itemsQuantity++;
+      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
+      let serialNo = map_2.size;
+      generateRow(map_2, tableDet[1], tableDet[2], updatedPrice, itemsQuantity, serialNo, "popup2Bill", itemName, itemPrice);
+
+    }
+    // If it is present in map
+    else {
+      // Updating the quantity of already added item in map
+      itemsQuantity++;
+      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
+      map_2.set(itemName, [itemPrice, map_2.get(itemName)[1] + 1]);
+      updateInput(map_2, "popup2", itemName);
+    }
+  }
+
+  if (tableName == "Table 3") {
+    // if itemInfo not present in map
+    if (!map_3.has(itemName)) {
+      map_3.set(itemName, [itemPrice, 1]);
+      itemsQuantity++;
+      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
+      let serialNo = map_3.size;
+      generateRow(map_3, tableDet[1], tableDet[2], updatedPrice, itemsQuantity, serialNo, "popup3Bill", itemName, itemPrice);
+    }
+    // If it is present in map
+    else {
+      // Updating the quantity of already added item in map
+      itemsQuantity++;
+      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
+      map_3.set(itemName, [itemPrice, map_3.get(itemName)[1] + 1]);
+      updateInput(map_3, "popup3", itemName);
+    }
+  }
+
+  if (tableName == "Table 4") {
+    // if itemInfo not present in map
+    if (!map_4.has(itemName)) {
+      map_4.set(itemName, [itemPrice, 1]);
+      itemsQuantity++;
+      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
+      let serialNo = map_4.size;
+      generateRow(map_4, tableDet[1], tableDet[2], updatedPrice, itemsQuantity, serialNo, "popup4Bill", itemName, itemPrice);
+    }
+    // If it is present in map
+    else {
+      // Updating the quantity of already added item in map
+      itemsQuantity++;
+      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
+      map_4.set(itemName, [itemPrice, map_4.get(itemName)[1] + 1]);
+      updateInput(map_4, "popup4", itemName);
+    }
+  }
+
+  if (tableName == "Table 5") {
+    // if itemInfo not present in map
+    if (!map_5.has(itemName)) {
+      map_5.set(itemName, [itemPrice, 1]);
+      itemsQuantity++;
+      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
+      let serialNo = map_5.size;
+      generateRow(map_5, tableDet[1], tableDet[2], updatedPrice, itemsQuantity, serialNo, "popup5Bill", itemName, itemPrice);
+    }
+    // If it is present in map
+    else {
+      // Updating the quantity of already added item in map
+      itemsQuantity++;
+      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
+      map_5.set(itemName, [itemPrice, map_5.get(itemName)[1] + 1]);
+      updateInput(map_5, "popup5", itemName);
+    }
+  }
+
+ 
+}
+
+
+
+
 
 // Targeting the tablebar & menubar
 
@@ -18,12 +185,18 @@ const table5 = document.getElementById("table-5");
 
 
 /*
-Making map for each table which will store the itemName as a key and array of [itemPrice , ItemQuantity] as a value
+Making map for each table which will store the itemName as a key and array of [Price , Quantity] as a value
 which will be used to update the popup & generate bill 
 
 */
-
-let map_1 = new Map();
+//total quantity count in each table
+int cnt1=0;
+int  cnt2=0;
+int cnt3=0
+int cnt4=0;
+int cnt5=0;
+//Data Structure
+let map_1 = new Map(); // Burger ->[200,3]
 let map_2 = new Map();
 let map_3 = new Map();
 let map_4 = new Map();
@@ -147,177 +320,7 @@ table5.addEventListener("dblclick", () => {
 });
 
 
-
-// Search Functionality Code Start:
-
-// Search for the specific table
-
-tableSearchBar.addEventListener("keyup", (e) => {
-  const searchTerm = e.target.value.toLowerCase();
-
-  Array.from(tableItemsBoxes).forEach((tableBox) => {
-    const tableName = tableBox.firstElementChild.textContent;
-    // console.log(tableName) ;
-    if (tableName.toLowerCase().indexOf(searchTerm) != -1) {
-      tableBox.style.display = "block";
-    } else {
-      tableBox.style.display = "none";
-    }
-  });
-});
-
-
-// Search for the specific menu
-
-menuSearchBar.addEventListener("keyup", (e) => {
-  const searchTerm = e.target.value.toLowerCase();
-  Array.from(menuItemBoxes).forEach((menuBox) => {
-    const menuName = menuBox.firstElementChild.textContent;
-    if (menuName.toLowerCase().indexOf(searchTerm) != -1) {
-      menuBox.style.display = "block";
-    } else {
-      menuBox.style.display = "none";
-    }
-  });
-});
-
-// Search Functionality Code End.
-
-
-// Feature of drop & drag 
-
-// Drag Function Start
-function allowDrop(ev) {
-  ev.preventDefault();
-}
-
-function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
-}
-
-// Drag Function End
-
-// Drop function Start
-
-function drop(ev) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  let tableDet = ev.target.children;
-  let itemsInfos = document.getElementById(data).children;
-  let itemName = itemsInfos[0].textContent;
-  let itemPrice = parseInt(itemsInfos[1].textContent.replace(/\D/g, "")); // rs. 100
-  let tableName = tableDet[0].textContent;
-  let tablePrice = parseInt(tableDet[1].textContent.split(": ")[1]);
-  let itemsQuantity = parseInt(tableDet[2].textContent.split(": ")[1]);
-
-  // Updating the price on tableDet
-  let updatedPrice = tablePrice + itemPrice;
-  tableDet[1].textContent = `Rs: ${updatedPrice}`;
-
-  if (tableName == "Table 1") {
-    // if itemInfo not present in map
-    if (!map_1.has(itemName)) {
-      map_1.set(itemName, [itemPrice, 1]);
-      itemsQuantity++;
-      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
-      let serialNo = map_1.size;
-      generateRow(map_1, tableDet[1], tableDet[2], updatedPrice, itemsQuantity, serialNo, "popup1Bill", itemName, itemPrice);
-    }
-    // If it is present in map
-    else {
-      // Updating the quantity of already added item in map
-      itemsQuantity++;
-      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
-      map_1.set(itemName, [itemPrice, map_1.get(itemName)[1] + 1]);
-      updateInput(map_1, "popup1", itemName);
-    }
-  }
-
-  if (tableName == "Table 2") {
-    // if itemInfo not present in map
-    if (!map_2.has(itemName)) {
-      map_2.set(itemName, [itemPrice, 1]);
-      itemsQuantity++;
-      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
-      let serialNo = map_2.size;
-      generateRow(map_2, tableDet[1], tableDet[2], updatedPrice, itemsQuantity, serialNo, "popup2Bill", itemName, itemPrice);
-
-    }
-    // If it is present in map
-    else {
-      // Updating the quantity of already added item in map
-      itemsQuantity++;
-      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
-      map_2.set(itemName, [itemPrice, map_2.get(itemName)[1] + 1]);
-      updateInput(map_2, "popup2", itemName);
-    }
-  }
-
-  if (tableName == "Table 3") {
-    // if itemInfo not present in map
-    if (!map_3.has(itemName)) {
-      map_3.set(itemName, [itemPrice, 1]);
-      itemsQuantity++;
-      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
-      let serialNo = map_3.size;
-      generateRow(map_3, tableDet[1], tableDet[2], updatedPrice, itemsQuantity, serialNo, "popup3Bill", itemName, itemPrice);
-    }
-    // If it is present in map
-    else {
-      // Updating the quantity of already added item in map
-      itemsQuantity++;
-      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
-      map_3.set(itemName, [itemPrice, map_3.get(itemName)[1] + 1]);
-      updateInput(map_3, "popup3", itemName);
-    }
-  }
-
-  if (tableName == "Table 4") {
-    // if itemInfo not present in map
-    if (!map_4.has(itemName)) {
-      map_4.set(itemName, [itemPrice, 1]);
-      itemsQuantity++;
-      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
-      let serialNo = map_4.size;
-      generateRow(map_4, tableDet[1], tableDet[2], updatedPrice, itemsQuantity, serialNo, "popup4Bill", itemName, itemPrice);
-    }
-    // If it is present in map
-    else {
-      // Updating the quantity of already added item in map
-      itemsQuantity++;
-      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
-      map_4.set(itemName, [itemPrice, map_4.get(itemName)[1] + 1]);
-      updateInput(map_4, "popup4", itemName);
-    }
-  }
-
-  if (tableName == "Table 5") {
-    // if itemInfo not present in map
-    if (!map_5.has(itemName)) {
-      map_5.set(itemName, [itemPrice, 1]);
-      itemsQuantity++;
-      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
-      let serialNo = map_5.size;
-      generateRow(map_5, tableDet[1], tableDet[2], updatedPrice, itemsQuantity, serialNo, "popup5Bill", itemName, itemPrice);
-    }
-    // If it is present in map
-    else {
-      // Updating the quantity of already added item in map
-      itemsQuantity++;
-      tableDet[2].textContent = `Total items: ${itemsQuantity}`;
-      map_5.set(itemName, [itemPrice, map_5.get(itemName)[1] + 1]);
-      updateInput(map_5, "popup5", itemName);
-    }
-  }
-
-  // ev.target.appendChild(document.getElementById(data));
-}
-
-// Drop function End
-
-
-
-// JavaScript of popup Start
+// Popup model logic
 
 const closeBtn1 = document.getElementById("close-btn1");
 const closeBtn2 = document.getElementById("close-btn2");
@@ -343,7 +346,6 @@ overlay.addEventListener("click", () => {
   overlay.classList.remove("show");
 });
 
-// JavaScript of popup End
 
 
 // Map table & popup
@@ -602,7 +604,5 @@ function totalBillForCurrentTable(tableMap) {
   return totalBillAmount;
 }
 
-
-// console.log(map_1, map_2, map_3, map_4, map_5);
 
 
