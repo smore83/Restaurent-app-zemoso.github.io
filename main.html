@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurent WebProject</title>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <h1 id="title">Restaurent App</h1>
+    <div id="container">
+        <div id="tablebar">
+            <div id="table-header">
+                <h1>Tables</h1>
+                <form id="search-tables">
+                    <input id="table-searchbar" type="text" placeholder="Search table" />
+                </form>
+            </div>
+            <ul id="table-list">
+                <li class="table-items">
+                    <div id="table-1" class="table-details" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                        <h4>Table 1</h4>
+                        <p>Rs: 0</p>
+                        <p>Total Quantity: 0</p>
+
+
+
+                    </div>
+
+                </li>
+                <li class="table-items">
+                    <div id="table-2" class="table-details" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <h4>Table 2</h4>
+                        <p>Rs: 0</p>
+                        <p>Total Quantity: 0</p>
+                        <!-- <button class="trigger" id="checkoutTable">CheckOut</button> -->
+                    </div>
+                </li>
+                <li class="table-items">
+                    <div id="table-3" class="table-details" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <h4>Table 3</h4>
+                        <p>Rs: 0</p>
+                        <p>Total Quantity: 0</p>
+                        <!-- <button class="trigger" id="checkoutTable">CheckOut</button> -->
+                    </div>
+                </li>
+                <li class="table-items">
+                    <div id="table-4" class="table-details" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <h4>Table 4</h4>
+                        <p>Rs: 0</p>
+                        <p>Total Quantity: 0</p>
+                        <!-- <button class="trigger" id="checkoutTable">CheckOut</button> -->
+                    </div>
+                </li>
+                <li class="table-items">
+                    <div id="table-5" class="table-details" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <h4>Table 5</h4>
+                        <p>Rs: 0</p>
+                        <p>Total Quantity: 0</p>
+                        <!-- <button class="trigger" id="checkoutTable">CheckOut</button> -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- Menu SearchBar -->
+        <div id="menubar">
+            <div id="menu-header">
+                <h1>Menu-Bar</h1>
+                <form id="search-menus">
+                    <input id="menu-searchbar" type="text" placeholder="   Search menu...course...item " />
+                </form>
+                <!-- <button type="submit" id="addMenu">Add Menu</button> -->
+            </div>
+            <!-- Started with menu code -->
+            <ul id="menu-list">
+                <li class="menu-items">
+                    <div class="menu-details" draggable="true" ondragstart="drag(event)" id="menu-items1">
+                        <h4>Burger</h4>
+                        <p>125 || Starter</p>
+                    </div>
+                </li>
+                <li class="menu-items">
+                    <div class="menu-details" draggable="true" ondragstart="drag(event)" id="menu-item2">
+                        <h4>Bhel</h4>
+                        <p>50 || main</p>
+                    </div>
+                </li>
+                <li class="menu-items">
+                    <div class="menu-details" draggable="true" ondragstart="drag(event)" id="menu-items3">
+                        <h4>Vadapav</h4>
+                        <p>20 || junky</p>
+                    </div>
+                </li>
+                <li class="menu-items">
+                    <div class="menu-details" draggable="true" ondragstart="drag(event)" id="menu-item4">
+                        <h4>Paneer</h4>
+                        <p>140 || Starter</p>
+                    </div>
+                </li>
+                <li class="menu-items">
+                    <div class="menu-details" draggable="true" ondragstart="drag(event)" id="menu-item5">
+                        <h4>Pizza</h4>
+                        <p>330 || junky</p>
+                    </div>
+                </li>
+                <li class="menu-items">
+                    <div class="menu-details" draggable="true" ondragstart="drag(event)" id="menu-item5">
+                        <h4>Misal</h4>
+                        <p>90 || normal</p>
+                    </div>
+                </li>
+                <li class="menu-items">
+                    <div class="menu-details" draggable="true" ondragstart="drag(event)" id="menu-item6">
+                        <h4>RicePlate</h4>
+                        <p>20 || Starter</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- crating Modal -->
+    <!-- model 1 for table 1 -->
+    <div id="popup1" class="popup">
+        <button class="closeBtn" id="close-btn1">&times</button>
+        <!-- Let's go popup 1 -->
+    </div>
+    <!-- model 2 for table 2 -->
+    <div id="popup2" class="popup">
+        <button class="closeBtn" id="close-btn2">&times</button>
+        <!-- Let's go popup 2 -->
+    </div>
+    <!-- model 3 for table 3 -->
+    <div id="popup3" class="popup">
+        <button class="closeBtn" id="close-btn3">&times</button>
+        <!-- Let's go popup 3 -->
+    </div>
+    <!-- model 4 for table 4 -->
+    <div id="popup4" class="popup">
+        <button class="closeBtn" id="close-btn4">&times</button>
+        <!-- Let's go popup 4 -->
+    </div>
+    <!-- model 5 for table 5 -->
+    <div id="popup5" class="popup">
+        <button class="closeBtn" id="close-btn5">&times</button>
+        <!-- Let's go popup 5 -->
+    </div>
+
+
+    <script src="index.js"></script> 
+</body>
+
+</html>
